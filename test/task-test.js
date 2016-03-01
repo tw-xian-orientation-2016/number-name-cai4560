@@ -21,6 +21,44 @@ describe('DividedNumArr', function() {
 	});
 });
 
+describe('GetSpellOutInfo', function() {
+	it('Should return correct SpellOutInfo', function() {
+		var input = ["613", "110", "301", "79", "600","10","3", ""];
+		var preStoredStrings = loadPreStoredStrings();
+		var result = GetSpellOutInfo(input, preStoredStrings);
+		var expectResult = ["six hundred and thirteen", "one hundred and ten",
+												"three hundred and one", "seventy nine",
+											  "six hundred", "ten", "three", ""];
+  	expect(result).toEqual(expectResult);
+	});
+
+	it('Should return correct SpellOutInfo', function() {
+		var input = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+		var preStoredStrings = loadPreStoredStrings();
+		var result = GetSpellOutInfo(input, preStoredStrings);
+		var expectResult = ["","one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+		expect(result).toEqual(expectResult);
+	});
+
+	it('Should return correct SpellOutInfo', function() {
+		var input = ["10", "11", "12", "13", "14", "15", "16", "17", "18", "19"];
+		var preStoredStrings = loadPreStoredStrings();
+		var result = GetSpellOutInfo(input, preStoredStrings);
+		var expectResult = ["ten","eleven", "twelve", "thirteen", "fourteen",
+											  "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
+		expect(result).toEqual(expectResult);
+	});
+
+	it('Should return correct SpellOutInfo', function() {
+		var input = ["20", "30", "40", "50", "60", "70", "80", "90"];
+		var preStoredStrings = loadPreStoredStrings();
+		var result = GetSpellOutInfo(input, preStoredStrings);
+		var expectResult = ["twenty","thirty", "forty", "fifty",
+												"sixty","seventy", "eighty", "ninety"];
+		expect(result).toEqual(expectResult);
+	});
+});
+
 /*
 describe('getReceipt', function() {
   var inputs = [{ cartItem: { item: { barcode: 'ITEM000001',
