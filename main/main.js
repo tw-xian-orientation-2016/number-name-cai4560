@@ -43,10 +43,7 @@ function replaceFigures(figure, preStoredStrings) {
 		}
 	}
 	return stringInfo += replaceLastTwoFigures(figure, preStoredStrings);
-}
-
-function replaceLastTwoFigures(figure, preStoredStrings) {
-	var stringInfo = "";
+}sunmmaryInfo.length
 	if(figure[1] === 1 ) {
 		stringInfo += preStoredStrings[figure[1] * 10 + figure[2]];
 	}
@@ -77,4 +74,12 @@ function GetSummaryInfo(spellOutInfo) {
 		summaryInfo.push(spellOutInfo[i]);
 	}
 	return summaryInfo;
+}
+/*     Task 4     */
+function printSummaryInfo(sunmmaryInfo, number) {
+	var allInfo = number.toString() + " --> ";
+	for (var i = sunmmaryInfo.length - 1; i >= 0; i--) {
+		allInfo += sunmmaryInfo[i];
+	}
+	console.log(allInfo);
 }

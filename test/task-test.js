@@ -64,47 +64,23 @@ describe('GetSummaryInfo', function() {
 	it('Should return correct SummaryInfo', function() {
 		var input = ["six", "twelve", "forty", "five hundred and ninety eight" ];
 		var result = GetSummaryInfo(input);
-		var expectResult = ["and six", "and twelve thousand, ", "and forty million, "
-												, "five hundred and ninety eight billion, "];
+		var expectResult = ["and six", "and twelve thousand, ",
+												"and forty million, ",
+												"five hundred and ninety eight billion, "];
   	expect(result).toEqual(expectResult);
 	});
 });
-/*
-describe('getReceipt', function() {
-  var inputs = [{ cartItem: { item: { barcode: 'ITEM000001',
-                                      name: '雪碧',
-                                      unit: '瓶',
-                                      price: 3.00 },
-                              number:5},
-                  total: 12.00,
-                  save: 3.00 },
-                { cartItem: { item: { barcode: 'ITEM000003',
-                                      name: '荔枝',
-                                      unit: '斤',
-                                      price: 15.00 },
-                result.push              number: 4.5 },
-                  total: 67.50,
-                  save:  0.00 },
-                { cartItem: { item: { barcode: 'ITEM000005',
-                                      name: '方便面',
-                                      unit: '袋',
-                                      price: 4.50},
-                              number: 3},
-                  total: 9.00,
-                  save: 4.50 }];
 
-  it('Should return correct receipt', function() {
+
+describe('Print Summary Info', function() {
+  var inputs = ["six hundred and three",
+								"one hundred and twelve thousand, ",
+								"forty three million, "];
+	var number = "43112603";
+  it('Should print correct info', function() {
     spyOn(console, 'log');
-    getReceipt(inputs);
-    var expectResult =    '***<没钱赚商店>收据***\n' +
-                          '名称：雪碧，数量：5瓶，单价：3.00(元)，小计：12.00(元)\n' +
-                          '名称：荔枝，数量：4.5斤，单价：15.00(元)，小计：67.50(元)\n' +
-                          '名称：方便面，数量：3袋，单价：4.50(元)，小计：9.00(元)\n' +
-                          '----------------------\n' +
-                          '总计：88.50(元)\n' +
-                          '节省：7.50(元)\n' +
-                          '**********************';
+    printSummaryInfo(inputs, number);
+    var expectResult = "43112603 --> forty three million, one hundred and twelve thousand, six hundred and three";
     expect(console.log).toHaveBeenCalledWith(expectResult);
   });
 });
-*/
