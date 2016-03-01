@@ -1,5 +1,24 @@
-describe('Divided the num arr', function() {
-    expect(result).toEqual(expectResult);
+describe('DividedNumArr', function() {
+	it('Should return correct numArr', function() {
+		var input = "43112603";
+		var result = getDividedNumArrs(input);
+		var expectResult = ["603","112","43"];
+  	expect(result).toEqual(expectResult);
+	});
+
+	it('Should return correct numArr', function() {
+		var input = "3112603";
+		var result = getDividedNumArrs(input);
+		var expectResult = ["603","112","3"];
+		expect(result).toEqual(expectResult);
+	});
+
+	it('Should return correct numArr', function() {
+		var input = "112603";
+		var result = getDividedNumArrs(input);
+		var expectResult = ["603","112"];
+		expect(result).toEqual(expectResult);
+	});
 });
 
 /*
@@ -15,7 +34,7 @@ describe('getReceipt', function() {
                                       name: '荔枝',
                                       unit: '斤',
                                       price: 15.00 },
-                              number: 4.5 },
+                result.push              number: 4.5 },
                   total: 67.50,
                   save:  0.00 },
                 { cartItem: { item: { barcode: 'ITEM000005',
