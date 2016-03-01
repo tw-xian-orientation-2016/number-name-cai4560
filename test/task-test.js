@@ -64,9 +64,9 @@ describe('GetSummaryInfo', function() {
 	it('Should return correct SummaryInfo', function() {
 		var input = ["six", "twelve", "forty", "five hundred and ninety eight" ];
 		var result = GetSummaryInfo(input);
-		var expectResult = ["and six", "and twelve thousand, ",
-												"and forty million, ",
-												"five hundred and ninety eight billion, "];
+		var expectResult = ["and six", "and twelve thousand ",
+												"and forty million ",
+												"five hundred and ninety eight billion "];
   	expect(result).toEqual(expectResult);
 	});
 });

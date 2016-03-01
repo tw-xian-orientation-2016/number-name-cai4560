@@ -1,3 +1,16 @@
+/*     Main-test     */
+function spellOutNumber(number) {
+	if(number === 0) {
+		console.log("0 --> zero");
+	}
+	else {
+		var dividedNumArrs = getDividedNumArrs(number);
+		var preStoredStrings = loadPreStoredStrings();
+		var spellOutInfo = GetSpellOutInfo(dividedNumArrs, preStoredStrings);
+		var summaryInfo = GetSummaryInfo(spellOutInfo);
+		printSummaryInfo(summaryInfo, number);
+	}
+}
 /*     Task 1     */
 function getDividedNumArrs(number) {
 	var arrsNum = parseInt(number.length / 3) + 1;
@@ -43,11 +56,13 @@ function replaceFigures(figure, preStoredStrings) {
 		}
 	}
 	return stringInfo += replaceLastTwoFigures(figure, preStoredStrings);
-}sunmmaryInfo.length
+}
+
+function replaceLastTwoFigures(figure, preStoredStrings) {
+	var stringInfo = "";
 	if(figure[1] === 1 ) {
 		stringInfo += preStoredStrings[figure[1] * 10 + figure[2]];
 	}
-
 	else {
 		stringInfo += preStoredStrings[figure[1] * 10];
 		if(figure[1] && figure[2]) {
@@ -60,26 +75,31 @@ function replaceFigures(figure, preStoredStrings) {
 /*     Task 3     */
 function GetSummaryInfo(spellOutInfo) {
 	var summaryInfo = [];
+	var flag = [];
 	for (var i = 0; i < spellOutInfo.length; i++) {
 		if(i != spellOutInfo.length - 1 && spellOutInfo[i].indexOf("and") == -1) {
 			spellOutInfo[i] = "and " + spellOutInfo[i];
+			flag[i] = true;
 			}
 		switch (i) {
 			case 0 :	break;
-			case 1 :	spellOutInfo[i] += " thousand, "; break;
-			case 2 :	spellOutInfo[i] += " million, "; break;
-			case 3 :	spellOutInfo[i] += " billion, "; break;
+			case 1 :	spellOutInfo[i] += " thousand"; break;
+			case 2 :	spellOutInfo[i] += " million"; break;
+			case 3 :	spellOutInfo[i] += " billion"; break;
 			default:  break;
+		}
+		if(i > 0) {
+			spellOutInfo[i] += flag[i-1] ? " " : ", ";
 		}
 		summaryInfo.push(spellOutInfo[i]);
 	}
 	return summaryInfo;
 }
 /*     Task 4     */
-function printSummaryInfo(sunmmaryInfo, number) {
+function printSummaryInfo(summaryInfo, number) {
 	var allInfo = number.toString() + " --> ";
-	for (var i = sunmmaryInfo.length - 1; i >= 0; i--) {
-		allInfo += sunmmaryInfo[i];
+	for (var i = summaryInfo.length - 1; i >= 0; i--) {
+		allInfo += summaryInfo[i];
 	}
 	console.log(allInfo);
 }
