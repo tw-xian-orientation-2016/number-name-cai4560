@@ -36,7 +36,8 @@ describe('GetSpellOutInfo', function() {
 		var input = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 		var preStoredStrings = loadPreStoredStrings();
 		var result = GetSpellOutInfo(input, preStoredStrings);
-		var expectResult = ["","one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+		var expectResult = ["","one", "two", "three", "four",
+												"five", "six", "seven", "eight", "nine"];
 		expect(result).toEqual(expectResult);
 	});
 
@@ -59,6 +60,15 @@ describe('GetSpellOutInfo', function() {
 	});
 });
 
+describe('GetSummaryInfo', function() {
+	it('Should return correct SummaryInfo', function() {
+		var input = ["six", "twelve", "forty", "five hundred and ninety eight" ];
+		var result = GetSummaryInfo(input);
+		var expectResult = ["and six", "and twelve thousand, ", "and forty million, "
+												, "five hundred and ninety eight billion, "];
+  	expect(result).toEqual(expectResult);
+	});
+});
 /*
 describe('getReceipt', function() {
   var inputs = [{ cartItem: { item: { barcode: 'ITEM000001',

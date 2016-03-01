@@ -23,11 +23,11 @@ function GetSpellOutInfo(dividedNumArrs, preStoredStrings) {
 function fillingZeroAndParseInt(dividedNumArr) {
 	var figures = [];
 	var location = 0;
-	for(var i = 3 - dividedNumArr.length; i > 0; i--) {
+	for (var i = 3 - dividedNumArr.length; i > 0; i--) {
 		figures[location] = 0;
 		location ++;
 	}
-  for(var i = 0; i < dividedNumArr.length; i++) {
+  for (var i = 0; i < dividedNumArr.length; i++) {
 		figures[location] = parseInt(dividedNumArr[i]);
 		location ++;
 	}
@@ -59,4 +59,22 @@ function replaceLastTwoFigures(figure, preStoredStrings) {
 		stringInfo +=  preStoredStrings[figure[2]];
 	}
 	return stringInfo;
+}
+/*     Task 3     */
+function GetSummaryInfo(spellOutInfo) {
+	var summaryInfo = [];
+	for (var i = 0; i < spellOutInfo.length; i++) {
+		if(i != spellOutInfo.length - 1 && spellOutInfo[i].indexOf("and") == -1) {
+			spellOutInfo[i] = "and " + spellOutInfo[i];
+			}
+		switch (i) {
+			case 0 :	break;
+			case 1 :	spellOutInfo[i] += " thousand, "; break;
+			case 2 :	spellOutInfo[i] += " million, "; break;
+			case 3 :	spellOutInfo[i] += " billion, "; break;
+			default:  break;
+		}
+		summaryInfo.push(spellOutInfo[i]);
+	}
+	return summaryInfo;
 }
