@@ -1,6 +1,10 @@
 /*     Main-test     */
 function spellOutNumber(number) {
-	if(number === 0) {
+	/*
+	if(Math.abs(parseInt(number)) !== number) {
+		console.log(number + " --> " + "Please input a positive number!");
+	}*/
+	if(number === "0") {
 		console.log("0 --> zero");
 	}
 	else {
@@ -77,19 +81,24 @@ function GetSummaryInfo(spellOutInfo) {
 	var summaryInfo = [];
 	var flag = [];
 	for (var i = 0; i < spellOutInfo.length; i++) {
-		if(i != spellOutInfo.length - 1 && spellOutInfo[i].indexOf("and") == -1) {
-			spellOutInfo[i] = "and " + spellOutInfo[i];
-			flag[i] = true;
+		if(spellOutInfo[i]) {
+			if(i != spellOutInfo.length - 1 && spellOutInfo[i].indexOf("and") == -1) {
+				spellOutInfo[i] = "and " + spellOutInfo[i];
+				flag[i] = true;
 			}
-		switch (i) {
-			case 0 :	break;
-			case 1 :	spellOutInfo[i] += " thousand"; break;
-			case 2 :	spellOutInfo[i] += " million"; break;
-			case 3 :	spellOutInfo[i] += " billion"; break;
-			default:  break;
+			switch (i) {
+				case 0 :	break;
+				case 1 :	spellOutInfo[i] += " thousand"; break;
+				case 2 :	spellOutInfo[i] += " million"; break;
+				case 3 :	spellOutInfo[i] += " billion"; break;
+				default:  break;
+			}
+			if(i > 0) {
+				spellOutInfo[i] += flag[i-1] ? " " : ", ";
+			}
 		}
-		if(i > 0) {
-			spellOutInfo[i] += flag[i-1] ? " " : ", ";
+		else {
+			flag[i] = true;
 		}
 		summaryInfo.push(spellOutInfo[i]);
 	}
