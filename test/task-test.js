@@ -2,22 +2,19 @@ describe('DividedNumArr', function() {
 	it('Should return correct numArr', function() {
 		var input = "43112603";
 		var result = getDividedNumArrs(input);
-		var expectResult = ["603","112","43"];
-  	expect(result).toEqual(expectResult);
+  	expect(result).toEqual(["603","112","43"]);
 	});
 
 	it('Should return correct numArr', function() {
 		var input = "3112603";
 		var result = getDividedNumArrs(input);
-		var expectResult = ["603","112","3"];
-		expect(result).toEqual(expectResult);
+		expect(result).toEqual(["603","112","3"]);
 	});
 
 	it('Should return correct numArr', function() {
 		var input = "112603";
 		var result = getDividedNumArrs(input);
-		var expectResult = ["603","112"];
-		expect(result).toEqual(expectResult);
+		expect(result).toEqual(["603","112"]);
 	});
 });
 
