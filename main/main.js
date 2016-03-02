@@ -1,14 +1,11 @@
 /*     Main-test     */
 function spellOutNumber(number) {
-	/*
-	if(Math.abs(parseInt(number)) !== number) {
-		console.log(number + " --> " + "Please input a positive number!");
-	}*/
 	var dividedNumArrs = getDividedNumArrs(number);
 	var preStoredStrings = loadPreStoredStrings();
-	var spellOutInfo = GetSpellOutInfo(dividedNumArrs, preStoredStrings);
-	var summaryInfo = GetSummaryInfo(spellOutInfo);
-	printSummaryInfo(summaryInfo, number);
+	var spellOutInfo = getSpellOutInfo(dividedNumArrs, preStoredStrings);
+	var summaryInfo = getSummaryInfo(spellOutInfo);
+	var allInfo = getJointInfo(summaryInfo, number);
+	console.log(number + " --> " + allInfo);
 }
 /*     Task 1     */
 function getDividedNumArrs(number) {
@@ -23,7 +20,7 @@ function getDividedNumArrs(number) {
 		return dividedNumArrs;
 }
 /*     Task 2     */
-function GetSpellOutInfo(dividedNumArrs, preStoredStrings) {
+function getSpellOutInfo(dividedNumArrs, preStoredStrings) {
 	if(dividedNumArrs.length === 1 && parseInt(dividedNumArrs) === 0) {
 		return ["zero"];
 	}
@@ -75,7 +72,7 @@ function replaceLastTwoFigures(figure, preStoredStrings) {
 	return stringInfo;
 }
 /*     Task 3     */
-function GetSummaryInfo(spellOutInfo) {
+function getSummaryInfo(spellOutInfo) {
 	var summaryInfo = [];
 	var flag = [];
 	for (var i = 0; i < spellOutInfo.length; i++) {
@@ -103,10 +100,10 @@ function GetSummaryInfo(spellOutInfo) {
 	return summaryInfo;
 }
 /*     Task 4     */
-function printSummaryInfo(summaryInfo, number) {
-	var allInfo = number.toString() + " --> ";
+function getJointInfo(summaryInfo, number) {
+	var jointInfo = "";
 	for (var i = summaryInfo.length - 1; i >= 0; i--) {
-		allInfo += summaryInfo[i];
+		jointInfo += summaryInfo[i];
 	}
-	console.log(allInfo);
+	return jointInfo;
 }
