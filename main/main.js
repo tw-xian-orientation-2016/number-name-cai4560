@@ -1,46 +1,48 @@
 /*     Main-test     */
 function spellOutNumber(number) {
-	var dividedNumArrs = getDividedNumArrs(number);
+	var splitArrs = getSplitArrs(number);
 	var preStoredStrings = loadPreStoredStrings();
-	var spellOutInfo = getSpellOutInfo(dividedNumArrs, preStoredStrings);
+	var spellOutInfo = getSpellOutInfo(splitArrs, preStoredStrings);
 	var summaryInfo = getSummaryInfo(spellOutInfo);
 	var allInfo = getJointInfo(summaryInfo, number);
 	console.log(number + " --> " + allInfo);
 }
+
 /*     Task 1     */
-function getDividedNumArrs(number) {
+function getSplitArrs(number) {
 	var arrsNum = parseInt(number.length / 3) + 1;
-	var dividedNumArrs = [];
+	var splitArrs = [];
 		for (var i = 0; i < arrsNum; i++ ) {
 			var start = number.length - i * 3;
 			if(start) {
-				dividedNumArrs.push(number.substring(start - 3, start));
+				splitArrs.push(number.substring(start - 3, start));
 			}
 		}
-		return dividedNumArrs;
+		return splitArrs;
 }
+
 /*     Task 2     */
-function getSpellOutInfo(dividedNumArrs, preStoredStrings) {
-	if(dividedNumArrs.length === 1 && parseInt(dividedNumArrs) === 0) {
+function getSpellOutInfo(splitArrs, preStoredStrings) {
+	if(splitArrs.length === 1 && parseInt(splitArrs) === 0) {
 		return ["zero"];
 	}
 		var spellOutInfo = [];
-	dividedNumArrs.forEach(function(dividedNumArr) {
-		var figures = fillingZeroAndParseInt(dividedNumArr);
+	splitArrs.forEach(function(splitArr) {
+		var figures = fillingZeroAndParseInt(splitArr);
 		spellOutInfo.push(replaceFigures(figures, preStoredStrings));
 	});
 	return spellOutInfo;
 }
 
-function fillingZeroAndParseInt(dividedNumArr) {
+function fillingZeroAndParseInt(splitArr) {
 	var figures = [];
 	var location = 0;
-	for (var i = 3 - dividedNumArr.length; i > 0; i--) {
+	for (var i = 3 - splitArr.length; i > 0; i--) {
 		figures[location] = 0;
 		location ++;
 	}
-  for (var i = 0; i < dividedNumArr.length; i++) {
-		figures[location] = parseInt(dividedNumArr[i]);
+  for (var i = 0; i < splitArr.length; i++) {
+		figures[location] = parseInt(splitArr[i]);
 		location ++;
 	}
 	return figures;
@@ -71,6 +73,7 @@ function replaceLastTwoFigures(figure, preStoredStrings) {
 	}
 	return stringInfo;
 }
+
 /*     Task 3     */
 function getSummaryInfo(spellOutInfo) {
 	var summaryInfo = [];
@@ -99,6 +102,7 @@ function getSummaryInfo(spellOutInfo) {
 	}
 	return summaryInfo;
 }
+
 /*     Task 4     */
 function getJointInfo(summaryInfo, number) {
 	var jointInfo = "";

@@ -1,20 +1,20 @@
-describe('Task 1: DividedNumArr', function() {
-	describe('It should return correct numArr',function() {
+describe('Task 1: GetSplitArrs', function() {
+	describe('It should return correct splitArrs',function() {
 		it('when given a 8-bits input', function() {
 			var input = "43112603";
-			var result = getDividedNumArrs(input);
+			var result = getSplitArrs(input);
 	  	expect(result).toEqual(["603","112","43"]);
 		});
 
 		it('when given a 7-bits input', function() {
 			var input = "3112603";
-			var result = getDividedNumArrs(input);
+			var result = getSplitArrs(input);
 			expect(result).toEqual(["603","112","3"]);
 		});
 
 		it('when given a 6-bits input', function() {
 			var input = "112603";
-			var result = getDividedNumArrs(input);
+			var result = getSplitArrs(input);
 			expect(result).toEqual(["603","112"]);
 		});
 	});
