@@ -4,16 +4,11 @@ function spellOutNumber(number) {
 	if(Math.abs(parseInt(number)) !== number) {
 		console.log(number + " --> " + "Please input a positive number!");
 	}*/
-	if(number === "0") {
-		console.log("0 --> zero");
-	}
-	else {
-		var dividedNumArrs = getDividedNumArrs(number);
-		var preStoredStrings = loadPreStoredStrings();
-		var spellOutInfo = GetSpellOutInfo(dividedNumArrs, preStoredStrings);
-		var summaryInfo = GetSummaryInfo(spellOutInfo);
-		printSummaryInfo(summaryInfo, number);
-	}
+	var dividedNumArrs = getDividedNumArrs(number);
+	var preStoredStrings = loadPreStoredStrings();
+	var spellOutInfo = GetSpellOutInfo(dividedNumArrs, preStoredStrings);
+	var summaryInfo = GetSummaryInfo(spellOutInfo);
+	printSummaryInfo(summaryInfo, number);
 }
 /*     Task 1     */
 function getDividedNumArrs(number) {
@@ -29,7 +24,10 @@ function getDividedNumArrs(number) {
 }
 /*     Task 2     */
 function GetSpellOutInfo(dividedNumArrs, preStoredStrings) {
-	var spellOutInfo = [];
+	if(dividedNumArrs.length === 1 && parseInt(dividedNumArrs) === 0) {
+		return ["zero"];
+	}
+		var spellOutInfo = [];
 	dividedNumArrs.forEach(function(dividedNumArr) {
 		var figures = fillingZeroAndParseInt(dividedNumArr);
 		spellOutInfo.push(replaceFigures(figures, preStoredStrings));
