@@ -76,7 +76,7 @@ describe('Task 3: GetSummaryInfo', function() {
 
 
 
-describe('Task 4: Get Joint Info', function() {
+describe('Task 4: GetJointInfo', function() {
 	describe('It should get correct joint info', function() {
   	it('It should print correct info', function() {
 			var inputs = ["six hundred and three",
